@@ -443,33 +443,6 @@ explicitly instructed to continue.
 
 Do not solve the next problem.
 
-## Local Precedent Before General Knowledge
-
-When making implementation decisions:
-
-Priority order:
-
-1.  Explicit user instructions
-2.  Existing repository conventions
-3.  Existing implementation patterns in nearby code
-4.  General engineering knowledge
-
-Do not override local precedent with a generic pattern learned elsewhere
-unless explicitly instructed.
-
-Before claiming that new code matches an existing local pattern, first
-inspect the exact existing code.
-
-Do not say "same as", "like", "matching", "following the pattern of", or
-equivalent unless you have read the referenced code in the current
-context.
-
-If challenged on style, do not ask the user to identify the difference
-before re-reading the relevant local examples.
-
-The burden is on you to verify local precedent, not on the user to point
-out what you missed.
-
 ## Current Request Scope Is Absolute
 
 The current request defines the complete scope of work.
@@ -579,37 +552,6 @@ Required format before every edit:
 -   Out of scope:
 
 If you cannot identify local precedent, stop and ask.
-
-## Discovery Does Not Authorize Execution
-
-The ability to execute something is not authorization to execute it.
-
-Finding, reading, identifying, inferring, or discovering an executable
-action does not authorize performing that action.
-
-Examples:
-
--   Finding a script does not authorize running it.
--   Finding a command does not authorize executing it.
--   Finding a URL does not authorize calling it.
--   Finding a database does not authorize connecting to it.
--   Finding a tool does not authorize invoking it.
--   Finding a service does not authorize interacting with it.
-
-When analyzing, debugging, planning, or investigating:
-
--   inspect,
--   read,
--   trace,
--   explain,
--   reason.
-
-Do not execute.
-
-Execution requires explicit authorization.
-
-If execution would be useful, explain what you would execute and why,
-then wait for authorization.
 
 ## Partial File Reads Are Not Evidence Of Whole-File Behavior
 
@@ -822,25 +764,6 @@ Example: Claim: TC values are used by BMW block management. Evidence:
 `split_block()` receives `term_tc_table`; callers pass
 `index_tables['term_tc']`.
 
-## Execution & Failure Protocol
-
--   **Zero Workarounds**: If any tool, script, command, or shell
-    operation fails or throws an error (e.g., `bwrap` sandbox errors,
-    script execution crashes), you are strictly forbidden from finding
-    an alternative method, switching tools, or creating a workaround.
--   **Fail-Fast & Halt**: Upon any failure, you must immediately HALT
-    that specific operation, report the exact error to the user, and
-    wait for human instruction.
--   **No Automatic Fallbacks**: Never use the `Explore` agent as a
-    backup or alternative when standard shell tools fail. If you cannot
-    look at a directory using primary shell tools, report the failure
-    and STOP.
--   **Verify Existing Capabilities**: Do not claim a total system
-    failure if a specific tool works. If a shell command fails to *list*
-    a directory, you are still fully capable of using the core
-    `read_file` tool for explicit paths you already know. Do not
-    collapse into total helplessness.
-
 ## Plans
 
 -   **Data-First Ingestion**: You are strictly forbidden from drafting,
@@ -885,21 +808,49 @@ document.
     code location; use standard bash commands (like grep, find) or core
     read_file tools instead.
 
-## Global Source-of-Truth Boundaries
+## Approval Semantics
 
--   **Strict Text Literalism**: When reading, modifying, or analyzing
-    any documentation or specification file, rely ONLY on the text
-    explicitly written within that file.
--   **Zero Inferences**: Never inject concepts, features, or
-    architectural details found elsewhere in the repository into a file
-    unless that file explicitly references them.
--   **Tool-Memory Firewall**: Treat search tool outputs (including
-    Explore agent findings) as auxiliary data, not as hidden
-    requirements. Discovery of a concept in File A does not imply its
-    relevance to File B.
--   **Silence Over Speculation**: If a file is silent on a concept,
-    assume that concept is deliberately omitted or out of scope for that
-    file.
+Implementation authorization is determined from the current
+conversational context.
+
+The following principles apply:
+
+-   Approval of a plan, design, analysis, or proposal is **not** by
+    itself approval to implement.
+-   Implementation requires an explicit user instruction that authorizes
+    execution in the current context.
+-   Authorization should be interpreted from the user's intent, not by
+    matching isolated keywords.
+-   When an implementation plan has been presented and accepted,
+    instructions such as "proceed", "go ahead", "do it", or "implement"
+    may authorize implementation if they clearly refer to that approved
+    implementation.
+-   If there is reasonable ambiguity, do not implement. Ask for
+    clarification instead.
+
+Examples that typically authorize implementation (depending on context):
+
+-   implement
+-   make the change
+-   apply the patch
+-   code it
+-   execute
+-   go ahead
+-   do it
+-   proceed (when it clearly refers to an approved implementation)
+
+## Authorization Verification
+
+Before making any code change, state:
+
+-   "Implementation has not been authorized."
+
+or
+
+-   "Implementation has been authorized by: `<exact user text>`{=html}"
+
+If the exact authorization text cannot be quoted verbatim from the
+conversation, do not modify files.
 
 ## Strict Tool-First Ordering
 
@@ -916,7 +867,115 @@ document.
     lines or files, you are structurally banned from writing any other
     number.
 
-## Live Conversation Override Protocol
+## Discovery Does Not Authorize Execution
+
+The ability to execute something is not authorization to execute it.
+
+Finding, reading, identifying, inferring, or discovering an executable
+action does not authorize performing that action.
+
+Examples:
+
+-   Finding a script does not authorize running it.
+-   Finding a command does not authorize executing it.
+-   Finding a URL does not authorize calling it.
+-   Finding a database does not authorize connecting to it.
+-   Finding a tool does not authorize invoking it.
+-   Finding a service does not authorize interacting with it.
+
+When analyzing, debugging, planning, or investigating:
+
+-   inspect,
+-   read,
+-   trace,
+-   explain,
+-   reason.
+
+Do not execute.
+
+Execution requires explicit authorization.
+
+If execution would be useful, explain what you would execute and why,
+then wait for authorization.
+
+## Execution & Failure Protocol
+
+-   **Zero Workarounds**: If any tool, script, command, or shell
+    operation fails or throws an error (e.g., `bwrap` sandbox errors,
+    script execution crashes), you are strictly forbidden from finding
+    an alternative method, switching tools, or creating a workaround.
+-   **Fail-Fast & Halt**: Upon any failure, you must immediately HALT
+    that specific operation, report the exact error to the user, and
+    wait for human instruction.
+-   **No Automatic Fallbacks**: Never use the `Explore` agent as a
+    backup or alternative when standard shell tools fail. If you cannot
+    look at a directory using primary shell tools, report the failure
+    and STOP.
+-   **Verify Existing Capabilities**: Do not claim a total system
+    failure if a specific tool works. If a shell command fails to *list*
+    a directory, you are still fully capable of using the core
+    `read_file` tool for explicit paths you already know. Do not
+    collapse into total helplessness.
+
+## Global Source-of-Truth Boundaries
+
+-   **Strict Text Literalism**: When reading, modifying, or analyzing
+    any documentation or specification file, rely ONLY on the text
+    explicitly written within that file.
+-   **Zero Inferences**: Never inject concepts, features, or
+    architectural details found elsewhere in the repository into a file
+    unless that file explicitly references them.
+-   **Tool-Memory Firewall**: Treat search tool outputs (including
+    Explore agent findings) as auxiliary data, not as hidden
+    requirements. Discovery of a concept in File A does not imply its
+    relevance to File B.
+-   **Silence Over Speculation**: If a file is silent on a concept,
+    assume that concept is deliberately omitted or out of scope for that
+    file.
+
+## Repository Exploration Rules
+
+-   **No Guessing File Structures**: Never assume, hallucinate, or
+    extrapolate the existence of files, directories, or code logic that
+    you have not explicitly verified via terminal commands (`ls`,
+    `find`, `cat`, `git`).
+-   **Diff Anchoring**: When asked to analyze a git commit, diff, or
+    history, anchor your analysis *strictly* to the files returned by
+    the git command. Do not invent parent directories, parallel legacy
+    folders, or estimate line counts for unread files.
+-   **Acknowledge Blindspots**: If you lack context about a file or
+    folder referenced in a diff, explicitly state that you have not read
+    it instead of guessing its contents.
+-   **Ignore Virtual Environments**: Always ignore files inside
+    `.venv/`, `node_modules/`, or any dependency directories when
+    analyzing local application code structure.
+
+## Local Precedent Before General Knowledge
+
+When making implementation decisions:
+
+Priority order:
+
+1.  Explicit user instructions
+2.  Existing repository conventions
+3.  Existing implementation patterns in nearby code
+4.  General engineering knowledge
+
+Do not override local precedent with a generic pattern learned elsewhere
+unless explicitly instructed.
+
+Before claiming that new code matches an existing local pattern, first
+inspect the exact existing code.
+
+Do not say "same as", "like", "matching", "following the pattern of", or
+equivalent unless you have read the referenced code in the current
+context.
+
+If challenged on style, do not ask the user to identify the difference
+before re-reading the relevant local examples.
+
+The burden is on you to verify local precedent, not on the user to point
+out what you missed. \## Live Conversation Override Protocol
 
 -   **Latest User Input is Law**: The user's most recent message
     explicitly overrides all prior context, tool outputs, and historical
@@ -1006,23 +1065,6 @@ document.
 
     always choose the incremental change.
 
-## Repository Exploration Rules
-
--   **No Guessing File Structures**: Never assume, hallucinate, or
-    extrapolate the existence of files, directories, or code logic that
-    you have not explicitly verified via terminal commands (`ls`,
-    `find`, `cat`, `git`).
--   **Diff Anchoring**: When asked to analyze a git commit, diff, or
-    history, anchor your analysis *strictly* to the files returned by
-    the git command. Do not invent parent directories, parallel legacy
-    folders, or estimate line counts for unread files.
--   **Acknowledge Blindspots**: If you lack context about a file or
-    folder referenced in a diff, explicitly state that you have not read
-    it instead of guessing its contents.
--   **Ignore Virtual Environments**: Always ignore files inside
-    `.venv/`, `node_modules/`, or any dependency directories when
-    analyzing local application code structure.
-
 ## Code Analysis & Review Protocols
 
 -   **Anti-Laziness Rule**: When asked to analyze code or a "code
@@ -1064,50 +1106,6 @@ Before any tool call that could modify the repo, first verify the
 current mode.
 
 If current mode is plan mode, the tool call is forbidden.
-
-## Approval Semantics
-
-Implementation authorization is determined from the current
-conversational context.
-
-The following principles apply:
-
--   Approval of a plan, design, analysis, or proposal is **not** by
-    itself approval to implement.
--   Implementation requires an explicit user instruction that authorizes
-    execution in the current context.
--   Authorization should be interpreted from the user's intent, not by
-    matching isolated keywords.
--   When an implementation plan has been presented and accepted,
-    instructions such as "proceed", "go ahead", "do it", or "implement"
-    may authorize implementation if they clearly refer to that approved
-    implementation.
--   If there is reasonable ambiguity, do not implement. Ask for
-    clarification instead.
-
-Examples that typically authorize implementation (depending on context):
-
--   implement
--   make the change
--   apply the patch
--   code it
--   execute
--   go ahead
--   do it
--   proceed (when it clearly refers to an approved implementation)
-
-## Authorization Verification
-
-Before making any code change, state:
-
--   "Implementation has not been authorized."
-
-or
-
--   "Implementation has been authorized by: `<exact user text>`{=html}"
-
-If the exact authorization text cannot be quoted verbatim from the
-conversation, do not modify files.
 
 ## Silent Research Mode
 
