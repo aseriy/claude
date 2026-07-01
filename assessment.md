@@ -1,151 +1,50 @@
 ## Overall assessment
 
-**Strengths**
+This is one of the strongest `CLAUDE.md` files I've seen for controlling coding-assistant behavior. It has a clear philosophy: conversation-first, evidence-first, authorization-first. Those themes remain consistent throughout. 
 
-* Excellent focus on conversation-state management.
-* Strong protection against premature implementation.
-* Clear separation between discussion, planning, and execution.
-* Heavy emphasis on evidence-based reasoning.
-* Good defenses against "assistant momentum" (the tendency to keep moving work forward).
-
-These address several common LLM failure modes, especially for coding assistants.
+Compared to many large `CLAUDE.md` files, this one is unusually good at constraining conversational behavior rather than trying to teach programming practices.
 
 ---
 
-## Major issues
+# Strengths
 
-### 1. Excessive duplication (largest problem)
+## 1. Conversation semantics are excellent
 
-Many concepts appear repeatedly with slightly different wording.
+The opening section is the strongest part of the document.
 
-Examples include:
+It establishes:
 
-* investigation mode
-* implementation authorization
-* planning authorization
-* scope boundaries
-* don't infer tasks
-* don't manufacture forward motion
-* answer then stop
-* evidence requirements
-* local precedent
-* implementation approval
+* discussion vs implementation
+* speech act recognition
+* user-driven investigation
+* conversation state
 
-Several of these are repeated 5–10 times.
+before discussing code.
 
-For Claude, this has two downsides:
-
-* increases prompt length
-* creates competing phrasings for essentially the same rule
-
-Claude generally performs better with one authoritative rule than many overlapping ones.
+That's exactly the ordering I'd recommend for Claude.
 
 ---
 
-### 2. Instruction collisions
+## 2. The prompt addresses real LLM failure modes
 
-Some rules conflict.
+Most rules aren't arbitrary.
 
-Example:
+They're targeted at common failures like:
 
-Early sections:
+* inferring authorization
+* manufacturing momentum
+* answering a different speech act
+* restating instead of contributing
+* assuming implementation intent
+* treating context as tasks
 
-> Investigation ends only when user explicitly says to implement.
-
-Later:
-
-> "Proceed" may authorize implementation depending on context.
-
-Later again:
-
-> Approval of a plan is NOT approval to implement.
-
-Later:
-
-> Proceed (after plan) usually authorizes implementation.
-
-Those aren't fully consistent.
-
-A model now has to reconcile multiple authorization systems.
+These are genuinely high-value constraints.
 
 ---
 
-### 3. Priority inversion
+## 3. The investigation model is particularly good
 
-The strongest rules are near the beginning.
-
-But hundreds of later rules continue redefining behavior.
-
-Claude generally pays more attention to:
-
-* earliest instructions
-* most concrete instructions
-* shortest rules
-
-Later repetitions dilute the earlier signal.
-
----
-
-### 4. Over-specification
-
-Many rules exist because they defend against one previous model failure.
-
-For example:
-
-> Never shorten identifiers.
-
-> Never normalize identifiers.
-
-> Never canonicalize identifiers.
-
-> Never simplify identifiers.
-
-Those could be one rule.
-
-The same happens throughout the file.
-
----
-
-### 5. Negative-only guidance
-
-Much of the prompt says:
-
-* don't
-* never
-* forbidden
-* prohibited
-
-Claude usually performs better when a constraint is paired with the desired behavior.
-
-Example:
-
-Instead of:
-
-> Do not infer implementation.
-
-Prefer:
-
-> Treat discussion as discussion. Execute only after explicit implementation authorization.
-
-Positive constraints are easier for the model to follow consistently.
-
----
-
-## Claude-specific observations
-
-### Excellent
-
-Speech Act Classification is particularly strong.
-
-Claude responds well to explicit intent classification.
-
-That section is probably one of the highest-value parts of the document.
-
----
-
-### Excellent
-
-Conversation State
+The distinction between
 
 Discussion
 
@@ -161,105 +60,251 @@ Planning
 
 Implementation
 
-This explicit state machine fits Claude's reasoning style well.
+appears repeatedly and consistently.
+
+Claude generally responds well to explicit state-machine style prompting.
 
 ---
 
-### Less useful
+## 4. Code grounding is strong
 
-Mandatory checklists repeated dozens of times.
+The later sections on
 
-Claude already internally reasons through instructions.
+* evidence
+* identifier literalism
+* no inferred behavior
+* verify before claiming
 
-Very long repeated checklists often become background noise.
+are among the better examples I've seen.
 
----
-
-### Less useful
-
-Many "STOP immediately" instructions.
-
-One clear stopping protocol is usually enough.
-
-Twenty versions of it don't improve compliance much.
+They encourage observable behavior rather than architectural guessing.
 
 ---
 
-## Structural issues
+# Weaknesses
 
-The file has gradually evolved instead of being designed as one document.
+## 1. Duplication remains the largest issue
 
-You can see layers:
+The document has clearly evolved over time.
+
+Many ideas appear multiple times.
+
+Examples include:
+
+* don't manufacture forward motion
+* implementation authorization
+* explicit authorization
+* discussion vs execution
+* answer then stop
+* unknown means unknown
+* evidence before claims
+* implementation scope
+* authorization
+* planning authorization
+
+Each is useful.
+
+The cumulative repetition is not.
+
+Claude doesn't gain much after the second or third repetition.
+
+---
+
+## 2. Authorization semantics are improved but not fully unified
+
+This is better than before.
+
+The revised Approval Semantics section is clearer and more nuanced.
+
+However, there is still one remaining inconsistency.
+
+Earlier:
+
+> after an approved plan, "proceed", "continue", "go ahead" authorize implementation. 
+
+Later:
+
+authorization depends on conversational context rather than keywords. 
+
+Those are close, but they're not identical.
+
+They're no longer contradictory.
+
+They're just slightly different formulations.
+
+---
+
+## 3. Some rules have become procedural rather than behavioral
+
+For example:
+
+Mandatory response formats
+
+Required pre-edit templates
+
+Exact wording requirements
+
+Required evidence formatting
+
+Those are useful if you're solving a recurring failure.
+
+But there are many of them.
+
+Claude tends to follow high-level behavioral constraints more reliably than dozens of procedural checklists.
+
+---
+
+## 4. Some sections defend against extremely narrow failures
+
+Examples include:
+
+specific shell failure modes
+
+particular tool names
+
+exact Explore restrictions
+
+specific sandbox behaviors
+
+Those are probably valuable because they reflect real experience.
+
+However, they increase prompt size without influencing most conversations.
+
+---
+
+# Claude-specific observations
+
+## Very effective
+
+Speech Act Classification
+
+This is probably the single highest-value section.
+
+It forces intent recognition before action.
+
+Claude tends to perform well with this kind of explicit classification.
+
+---
+
+## Very effective
+
+Context Does Not Require Restatement
+
+Excellent.
+
+This directly counters a common conversational weakness.
+
+---
+
+## Very effective
+
+The User Is The Primary Source Of Truth
+
+Also excellent.
+
+It discourages repository archaeology and unnecessary autonomous discovery.
+
+---
+
+## Moderately effective
+
+Mandatory checklists
+
+These are probably overrepresented.
+
+One or two concise checklists are likely sufficient.
+
+---
+
+## Less effective
+
+Repeated "STOP"
+
+There are many variations of:
+
+* stop
+* halt
+* wait
+* do not continue
+* do not create momentum
+* answer then stop
+
+One canonical stopping protocol would likely achieve most of the benefit.
+
+---
+
+# Structural observations
+
+The document appears to have grown incrementally.
+
+You can identify successive layers:
 
 1. conversation semantics
 2. investigation
-3. implementation
-4. plans
-5. evidence
-6. repository inspection
-7. authorization
-8. code grounding
-9. plan mode
-10. literal identifiers
-11. tool restrictions
-12. approval semantics
-13. more authorization
-14. more investigation
+3. implementation boundaries
+4. planning
+5. repository grounding
+6. authorization
+7. scope verification
+8. diagnostics
+9. evidence
+10. tool behavior
+11. editing constraints
 
-Many later sections restate earlier sections.
+The layering is logical, but later additions often restate earlier principles instead of extending them.
 
 ---
 
-## Token efficiency
+# Token efficiency
 
-This file is approximately **38,000 characters**, roughly **9,000–10,000 tokens** depending on tokenization. 
+The prompt is still substantially larger than it needs to be.
 
-For Claude Code, that's significant because `CLAUDE.md` is part of the prompt context on each turn.
+I think you could eventually remove 30–50% of the document without materially changing Claude's behavior.
 
-A careful consolidation could likely reduce it to **3,000–5,000 tokens** while preserving nearly all of its behavioral effect.
+The repeated concepts dominate the token count more than genuinely new instructions.
 
 ---
 
-## Highest-value sections
+# Highest-value sections
 
-If I were ranking them:
+If I were ranking them today:
 
 1. Conversation Semantics Protocol
 2. Speech Act Classification
-3. User Controls Investigation
-4. Explicit Authorization Requirement
-5. Mandatory Scope Verification
-6. Evidence Before Claims
-7. Local Precedent
+3. User Controls The Investigation
+4. Context Does Not Require Restatement
+5. Explicit Authorization Requirement
+6. Mandatory Scope Verification
+7. Code Fact Grounding
 8. Investigation Mode
-9. Plan Mode
+9. Local Precedent Before General Knowledge
 10. Approval Semantics
-
-These encode the core behavioral model.
 
 ---
 
-## Lowest-value sections
+# Lowest-value sections
 
-The least valuable are the repeated variants of:
+The least valuable areas are still the repeated formulations of:
 
-* "Don't manufacture forward motion."
-* "Answer then stop."
-* "Don't infer implementation."
-* "Implementation requires authorization."
-* "Unknown means unknown."
-* "No unverified code claims."
+* don't manufacture forward motion
+* implementation authorization
+* answer then stop
+* explicit authorization
+* unknown means unknown
+* no unverified code claims
 
-Each is individually useful, but they appear often enough that they're better expressed once as canonical rules with later sections referring back to them.
+Not because they're poor rules, but because later occurrences rarely add new semantics.
 
-## Overall
+---
 
-From a Claude optimization perspective, I'd rate it:
+# Overall
 
-* **Behavioral quality:** 9.5/10
+From a Claude optimization perspective:
+
+* **Behavioral quality:** 9.7/10
 * **Coverage:** 10/10
-* **Maintainability:** 5/10
-* **Token efficiency:** 4/10
-* **Internal consistency:** 7.5/10
+* **Maintainability:** 5.5/10
+* **Token efficiency:** 4.5/10
+* **Internal consistency:** 8.5/10
 
-The main opportunity is not adding more rules, but consolidating existing ones into a smaller set of authoritative principles. That would reduce context usage and likely improve adherence by reducing instruction overlap.
+The revision improved the document by reducing one of the few genuine semantic inconsistencies. At this point, the primary opportunity is no longer correctness—it's consolidation. Most future improvements should focus on making existing rules more authoritative and less repetitive rather than introducing new guidance.
