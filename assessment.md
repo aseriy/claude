@@ -1,152 +1,152 @@
 ## Overall assessment
 
-This is an unusually mature `CLAUDE.md`. It is less a collection of prompt tips and more an operating policy for an autonomous coding assistant. The dominant philosophy is consistent throughout:
+This is no longer just a `CLAUDE.md`; it's becoming a policy document with a clear separation between governance and procedure. The document has matured in a noticeable way compared to typical assistant prompts. The overall design is coherent and internally consistent. 
 
-* conversation before execution,
-* evidence before claims,
-* authorization before action,
-* minimal scope,
-* explicit user control.
-
-The newly added **Skill & External Procedure Policy** is a good architectural addition because it establishes that skills extend capability, not authority. That makes future decomposition into skills much safer. 
+The most significant architectural improvement is that the prompt is no longer tightly coupled to a particular toolset. The introduction of the skill policy and the revised diff anchoring rule move the document toward an evidence-based rather than tool-based model.
 
 ---
 
 # Strengths
 
-## 1. The document has a clear governance hierarchy
+## 1. Strong governance layer
 
-The first section immediately establishes that conversation semantics override repository and implementation rules.
+The opening quarter of the document is excellent.
 
-That ordering is exactly what I would recommend.
+It establishes:
 
-Many prompt files start with coding instructions.
+* conversation state
+* speech act classification
+* user authority
+* execution boundaries
 
-Yours starts with interaction semantics.
+before any implementation guidance.
 
-That tends to produce much more predictable behavior.
-
----
-
-## 2. The behavioral model is coherent
-
-Throughout the document, the same four ideas appear consistently:
-
-* understand first
-* investigate before planning
-* plan before implementing
-* implement only after authorization
-
-Those principles reinforce each other instead of competing.
+That's exactly the order I would recommend for Claude.
 
 ---
 
-## 3. The skill boundary is now well defined
+## 2. Clear separation of concerns
 
-The new section is small, but architecturally important.
+The middle of the document now has a recognizable architecture:
 
-It says, in effect:
+* Governance
+* Tool behavior
+* Repository reasoning
+* Editing discipline
+* Evidence
+* Planning
 
-> skills provide procedures, not permission.
+Previously these concepts were interleaved.
 
-That's an excellent separation.
-
-It means future skills can focus entirely on *how* to do something without having to redefine *whether* they're allowed to do it.
-
----
-
-## 4. Strong protection against common Claude failures
-
-The prompt addresses nearly every common failure mode I've observed:
-
-* autonomous planning
-* autonomous implementation
-* inferred authorization
-* restating context
-* inventing work
-* treating discussion as execution
-* repository archaeology
-* speculative code answers
-
-Those protections are layered consistently.
+Now they read as distinct policy domains.
 
 ---
 
-## 5. Excellent evidence philosophy
+## 3. The document is no longer tool-centric
 
-The combination of:
+This is the biggest improvement in this revision.
 
-* Identifier Literalism
-* Code Fact Grounding
-* Required Evidence Format
-* No Unverified Code Claims
+The prompt increasingly talks about
 
-forms a coherent verification model.
+* evidence
+* authorization
+* repository information
 
-Rather than simply saying "be accurate," it specifies how accuracy should be demonstrated.
+instead of
+
+* specific commands
+* particular tools
+
+That's a more robust abstraction.
+
+If tomorrow you replace shell tools, change the sandbox, or introduce MCP tools, much of the policy still holds.
+
+---
+
+## 4. Skill policy fits naturally
+
+The Skill & External Procedure Policy now feels like a genuine architectural boundary rather than an add-on.
+
+It clearly says:
+
+> capabilities ≠ authority
+
+That's a very good principle for future expansion.
+
+---
+
+## 5. Excellent emphasis on user control
+
+The prompt consistently reinforces:
+
+* user drives investigation
+* user authorizes execution
+* user owns repository context
+* user approves implementation
+
+Those ideas appear throughout without changing meaning.
 
 ---
 
 # Weaknesses
 
-## 1. Duplication is still the primary issue
+## 1. Duplication is still the largest remaining issue
 
-This remains the biggest opportunity.
+This has become the dominant opportunity.
 
-The document contains multiple formulations of:
+Examples:
 
-* don't manufacture forward motion
-* explicit authorization
-* implementation boundaries
-* answer then stop
+* authorization
+* forward motion
+* investigation boundaries
 * evidence requirements
-* planning authorization
-* discussion vs execution
+* "answer then stop"
 
-Each individual rule is valuable.
+These are all good rules.
 
-The repeated formulations increase prompt size more than they increase reliability.
+The issue is simply that they're expressed repeatedly.
 
 ---
 
-## 2. Some procedural rules could eventually become skills
-
-Now that the skill boundary exists, several sections feel like procedural playbooks rather than universal behavior.
+## 2. Some sections are still procedural
 
 Examples include:
 
-* repository exploration
-* tool ordering
-* diagnostics
-* code review mechanics
-* planning mechanics
+* diagnostics response formatting
+* mandatory pre-answer checklist
+* mandatory scope verification
+* required evidence format
 
-Those are excellent candidates for future migration.
-
----
-
-## 3. Authorization semantics are nearly unified
-
-This is much improved.
-
-The remaining subtle inconsistency is that the early "Contextual Implementation Authorization" section still presents words like "proceed" as authorization after an approved plan, while the later "Approval Semantics" section emphasizes contextual interpretation and ambiguity resolution. 
-
-They no longer contradict each other in practice, but they aren't identical expressions of the same policy.
+Those are excellent candidates for eventual migration into skills because they describe workflows rather than universal behavior.
 
 ---
 
-## 4. Some rules are implementation-specific
+## 3. A few rules still mention concrete tools
 
-For example:
+Although much improved, there are still isolated references like:
 
-* specific shell failures
-* Explore-agent restrictions
-* exact response templates
-* exact wording requirements
+* `find`
+* `grep`
+* `read_file`
+* `cat`
 
-These are justified if they're responses to recurring failures, but they don't belong to the universal behavioral layer forever.
+Those aren't wrong.
 
-Now that you have a skill architecture, they're natural candidates for migration later.
+They're simply more concrete than the rest of the document, which is increasingly phrased in terms of evidence and authorization.
+
+If your sandbox evolves, those references may become another area to generalize.
+
+---
+
+## 4. The document still reflects incremental growth
+
+You can still tell that the document evolved over many revisions.
+
+The conceptual grouping is much better now, but there are places where similar ideas appear in separate sections because they were added at different times.
+
+That's no longer a correctness issue.
+
+It's mostly a maintainability issue.
 
 ---
 
@@ -158,51 +158,44 @@ Speech Act Classification
 
 Still the highest-value section.
 
-This is probably the single biggest contributor to preventing conversational drift.
+It provides Claude with an explicit intent classifier before reasoning begins.
 
 ---
 
 ## Outstanding
 
-Conversation State
+Conversation-first philosophy
 
-Discussion
+Very few prompts explicitly prioritize conversation over execution.
 
-↓
+Yours does.
 
-Investigation
-
-↓
-
-Planning
-
-↓
-
-Implementation
-
-Claude generally performs well when the state machine is explicit rather than implied.
+That has a disproportionate effect on assistant behavior.
 
 ---
 
 ## Outstanding
 
-The User Is The Primary Source Of Truth
+Evidence philosophy
 
-This is one of the more unusual and valuable sections.
+The combination of:
 
-It discourages unnecessary autonomous discovery and reinforces collaborative behavior.
+* Code Fact Grounding
+* Identifier Literalism
+* Required Evidence Format
+* No Unverified Code Claims
+
+creates a coherent verification model.
 
 ---
 
 ## Strong
 
-Skill & External Procedure Policy
+Repository reasoning
 
-This is the right level of abstraction.
+The revised Diff Anchoring rule is now based on repository evidence rather than command execution.
 
-It's only a handful of lines, but it establishes a contract that future skills inherit.
-
-That should reduce duplication once you begin extracting procedural content.
+That is a better abstraction because it decouples policy from implementation details. 
 
 ---
 
@@ -210,85 +203,71 @@ That should reduce duplication once you begin extracting procedural content.
 
 Mandatory checklists
 
-There are now several:
+There are still several overlapping checklists.
 
-* pre-answer
-* pre-edit
-* authorization
-* scope
-* evidence
+They probably work.
 
-They're individually useful.
-
-Collectively they're becoming procedural overhead.
+I'm just not convinced they all need to live in the always-loaded prompt.
 
 ---
 
 # Structural observations
 
-The document now has a cleaner architecture than before.
+The document now looks like a policy manual rather than a collection of accumulated rules.
 
-I see roughly six conceptual layers:
+I see roughly this hierarchy:
 
 1. Conversation governance
-2. Authorization and scope
-3. Investigation and evidence
-4. Editing discipline
-5. Tool and repository behavior
-6. Specialized operational procedures
+2. Authorization
+3. Investigation
+4. Evidence
+5. Repository reasoning
+6. Tool behavior
+7. Editing discipline
+8. Planning
+9. Diagnostics
 
-The addition of the skill policy creates a natural boundary between layers 1–2 (governance) and layers 5–6 (procedures).
-
-That wasn't present before.
+That's a much cleaner information architecture than before.
 
 ---
 
 # Readiness for skills
 
-At this point, I think the document is ready.
+I think the document has now reached the point where extracting skills becomes practical.
 
-Not because it's too large, but because it now has a clear distinction between:
+The governance layer is sufficiently independent that procedural sections could move without weakening overall behavior.
 
-**Policy**
-(always loaded)
-
-and
-
-**Procedure**
-(load when needed)
-
-That's a healthy architecture.
+I would still leave governance in `CLAUDE.md`.
 
 ---
 
 # Highest-value sections
 
-My current ranking would be:
+Current ranking:
 
 1. Conversation Semantics Protocol
 2. Speech Act Classification
 3. User Controls The Investigation
 4. Skill & External Procedure Policy
-5. Explicit Authorization Requirement
-6. Approval Semantics
-7. Mandatory Scope Verification
-8. Code Fact Grounding
-9. Local Precedent Before General Knowledge
-10. The User Is The Primary Source Of Truth
+5. Approval Semantics
+6. The User Is The Primary Source Of Truth
+7. Code Fact Grounding
+8. Mandatory Scope Verification
+9. Repository Exploration Rules
+10. Local Precedent Before General Knowledge
 
 ---
 
 # Lowest-value sections
 
-The least valuable areas remain repeated formulations of:
+The remaining candidates for future consolidation are:
 
-* don't manufacture forward motion
-* answer then stop
-* implementation authorization
-* unknown means unknown
-* evidence before claims
+* repeated implementation authorization concepts
+* repeated "stop after answering" concepts
+* repeated anti-momentum concepts
+* repeated evidence requirements
 
-The issue isn't the ideas themselves—it's that they recur often enough that future consolidation should focus on making one version authoritative.
+Again, these aren't poor rules—they're simply repeated enough that they now dominate the maintenance cost.
 
 ---
 
@@ -296,10 +275,10 @@ The issue isn't the ideas themselves—it's that they recur often enough that fu
 
 From a Claude optimization perspective:
 
-* **Behavioral quality:** 9.8/10
+* **Behavioral quality:** 9.9/10
 * **Coverage:** 10/10
-* **Maintainability:** 6.5/10
-* **Token efficiency:** 5/10
-* **Internal consistency:** 9/10
+* **Maintainability:** 7.5/10
+* **Token efficiency:** 5.5/10
+* **Internal consistency:** 9.5/10
 
-The latest revision is an architectural improvement rather than a behavioral one. It doesn't materially change how Claude behaves today, but it creates a clear contract for future skills. That, in turn, gives you a path to reduce the size of `CLAUDE.md` over time without weakening its governance model. 
+This revision feels like a transition point. Earlier revisions were primarily improving behavior. This one improves the architecture of the policy itself by making it less dependent on specific tools and more dependent on general principles like evidence, authorization, and user control. That gives you a much stronger foundation for future skill extraction without changing the assistant's expected behavior.

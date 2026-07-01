@@ -939,10 +939,11 @@ then wait for authorization.
     extrapolate the existence of files, directories, or code logic that
     you have not explicitly verified via terminal commands (`ls`,
     `find`, `cat`, `git`).
--   **Diff Anchoring**: When asked to analyze a git commit, diff, or
-    history, anchor your analysis *strictly* to the files returned by
-    the git command. Do not invent parent directories, parallel legacy
-    folders, or estimate line counts for unread files.
+-   **Diff Anchoring**: When analyzing a diff, commit, history excerpt,
+    or other repository evidence provided by the user or obtained
+    through explicitly authorized commands, anchor your analysis
+    *strictly* to that evidence. Do not infer parent directories,
+    parallel legacy folders, unread files, or their contents.
 -   **Acknowledge Blindspots**: If you lack context about a file or
     folder referenced in a diff, explicitly state that you have not read
     it instead of guessing its contents.
