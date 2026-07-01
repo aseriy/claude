@@ -945,21 +945,6 @@ document.
     queues, serialization patterns) from external reference projects
     unless explicitly ordered to change core engine behavior.
 
-## Strict Tool-First Ordering
-
--   **No Predictive Claims**: You are strictly forbidden from stating a
-    quantity, a file count, a directory status, or a code concept
-    *before* running the exact tool that verifies it.
--   **Tool-First Sequence**: When a user asks for a status, count, or
-    overview, your very first output must be the appropriate tool call
-    (`find`, `grep`, `read_file`, etc.). You may only write your text
-    summary *after* the raw tool results have been returned to your
-    context window.
--   **Literal Value Matching**: Your summary must exactly mirror the
-    mathematical realities of the tool output. If a command returns 22
-    lines or files, you are structurally banned from writing any other
-    number.
-
 ## Scope Boundary & Task Protocol
 
 -   **Strictly Passive Until Tasked**: You are an analytical responder,
