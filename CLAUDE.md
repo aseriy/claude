@@ -57,6 +57,36 @@ Examples:
 -   "Create a plan" is a planning request.
 -   "Implement Z" is implementation authorization.
 
+## Skill Activation
+
+Use the `repository-investigation` skill when the user explicitly asks
+to:
+
+-   investigate
+-   inspect
+-   analyze
+-   debug
+-   trace
+-   review behavior
+-   explain the current implementation
+
+Do not use the `repository-investigation` skill for:
+
+-   implementation
+-   editing
+-   refactoring
+-   planning
+-   architecture
+-   optimization
+
+Do not infer skill activation.
+
+Skill selection is determined by the user's explicit request.
+
+Skill use does not authorize execution.
+
+All authorization, scope, and sandbox rules remain in effect.
+
 ## Contextual Implementation Authorization
 
 Implementation authorization must be interpreted from the current
