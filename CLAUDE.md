@@ -851,6 +851,27 @@ Example: Claim: TC values are used by BMW block management. Evidence:
     explicitly requested.
 -   Plans should focus on implementation approach only.
 
+## Skill & External Procedure Policy
+
+Skills extend capabilities. They do not extend authority.
+
+The use of a skill, script, command, or external procedure does not:
+
+-   authorize execution,
+-   bypass approval requirements,
+-   relax sandbox restrictions,
+-   permit autonomous repository exploration,
+-   authorize write operations,
+-   authorize tool fallback,
+-   authorize agent delegation.
+
+All existing authorization, scope, and conversation-state rules continue
+to apply.
+
+A skill may describe approved procedures or invoke user-approved
+scripts, but execution still requires explicit authorization under this
+document.
+
 ## Tool Use Restrictions
 
 -   NEVER invoke the subagent_type: "Explore" for standard coding,
