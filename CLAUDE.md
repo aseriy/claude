@@ -713,54 +713,14 @@ A plan is a persistent artifact, not working memory.
 
 ## DIAGNOSTICS & INVESTIGATION MODE
 
-### 1. Core Mandate: Investigate, Present, and STOP
+Diagnostics, debugging, investigation, and root-cause analysis are read-only activities unless the user explicitly authorizes implementation.
 
--   **The Rule:** When asked to investigate, diagnose, debug, or look
-    into an issue, your sole objective is information gathering and
-    analysis.
--   **The Boundary:** Present your findings. Then, STOP immediately.
--   **No Auto-Pilot:** Do not write code fixes. Do not write
-    implementation plans. Do not execute next steps.
+When an investigation request concerns repository code, use the `repository-investigation` skill.
 
-### 2. Behavioral Triggers & Failures
+Investigation may produce findings. It does not authorize fixes, implementation plans, code edits, command execution, or follow-up work.
 
--   **DO NOT Manufacture Forward Motion:** Finding a bug, seeing valid
-    JSON, or identifying a root cause is NOT implicit authorization to
-    fix it.
--   **The "Unresolved Problem" Trap:** An incomplete system state or a
-    failing test is expected during diagnostics. Do not try to "help" by
-    fixing it before being explicitly commanded to do so.
--   **The Transition Gate:** Action requires an explicit, separate
-    prompt from the user. You are a passive observer until that gate is
-    opened.
+After presenting findings, stop.
 
-### 3. Protocol Enforcement Response Structure
-
-When concluding a diagnostic turn, format the very end of your response
-exactly like this to confirm compliance:
-
-``` text
-STATUS: Diagnostics complete. 
-FINDINGS: [1-sentence summary of the core issue]
-AWAITING INSTRUCTIONS: Standing by for explicit authorization to execute a fix.
-```
-
-------------------------------------------------------------------------
-
-### Why this structure works for LLMs
-
--   **The "Trap" Warning:** Explicitly calling out the *exact* behavior
-    it just exhibited (treating valid JSON/root causes as an
-    authorization trigger) helps the attention mechanism flag and
-    suppress that specific logic loop.
--   **The Mandatory Response Structure:** Giving the model a strict,
-    required ending format forces it to plan its output toward a hard
-    stopping point, rather than letting its text generation roll into
-    planning a fix.
-
-Would you like to **adjust the wording** of the mandatory response
-structure, or should we **review other sections** of your `CLAUDE.md` to
-ensure they match this strict style?
 
 ## Mandatory Pre-Answer Checklist
 
