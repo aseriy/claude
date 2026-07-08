@@ -140,3 +140,28 @@ When implementation is complete:
 - stop after the authorized scope
 - do not continue with additional improvements
 - do not suggest or perform follow-up implementation unless requested
+
+
+## Repository Vocabulary
+
+Treat the repository's existing names as canonical.
+
+Before introducing a new:
+
+- function
+- method
+- class
+- interface
+- type
+- variable
+- constant
+- file
+- directory
+
+search for equivalent implementations or concepts.
+
+If an equivalent exists, reuse its naming unless the user explicitly requests otherwise.
+
+Do not create synonyms for the same concept.
+
+
