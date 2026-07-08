@@ -141,6 +141,7 @@ When implementation is complete:
 - do not continue with additional improvements
 - do not suggest or perform follow-up implementation unless requested
 
+---
 
 ## Repository Vocabulary
 
@@ -164,4 +165,14 @@ If an equivalent exists, reuse its naming unless the user explicitly requests ot
 
 Do not create synonyms for the same concept.
 
+---
 
+## Reuse Before Create
+
+Before introducing any new function, helper, class, utility, or non-trivial logic:
+
+1. Search the current file for existing functionality that fully or partially satisfies the requirement.
+2. If none exists, search nearby repository code.
+3. Prefer reusing or extending existing implementations over creating new ones.
+4. Do not duplicate behavior under a different name, signature, or implementation.
+5. If existing code can satisfy the requirement with a localized modification, modify it instead of introducing a parallel implementation.
