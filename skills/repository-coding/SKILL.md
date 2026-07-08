@@ -68,8 +68,9 @@ The current request defines the entire implementation scope.
 Before introducing new code:
 
 - inspect nearby implementations
-- follow existing repository conventions
-- reuse established patterns
+- identify the applicable repository pattern
+- follow repository conventions
+- reuse established implementations and patterns
 
 Repository precedent takes priority over general engineering preferences.
 
@@ -102,14 +103,13 @@ Never:
 
 ## Implementation Style
 
-Prefer:
+All changes must:
 
-- minimal edits
-- surgical changes
-- existing architecture
-- existing coding style
+- be minimal
+- preserve the existing architecture
+- preserve the existing coding style
 
-Avoid unsolicited:
+Do not introduce unsolicited:
 
 - refactoring
 - formatting changes
@@ -173,6 +173,24 @@ Before introducing any new function, helper, class, utility, or non-trivial logi
 
 1. Search the current file for existing functionality that fully or partially satisfies the requirement.
 2. If none exists, search nearby repository code.
-3. Prefer reusing or extending existing implementations over creating new ones.
+3. Reuse or extend existing implementations. Create a new implementation only when no suitable existing implementation exists.
 4. Do not duplicate behavior under a different name, signature, or implementation.
 5. If existing code can satisfy the requirement with a localized modification, modify it instead of introducing a parallel implementation.
+
+---
+
+## Pattern Replication
+
+When implementing another instance of an existing repository construct (for example: plugin, command, handler, provider, adapter, service, controller):
+
+1. Identify at least one complete existing implementation before writing code.
+2. Treat that implementation as the structural template.
+3. Replicate its organization, including:
+   - file layout
+   - companion files (tests, registration, configuration, documentation, etc.)
+   - placement of functions, types, constants, and variables
+   - initialization and registration patterns
+4. Do not infer a different organization because it seems cleaner or more appropriate.
+5. Deviate from the established pattern only when:
+   - the repository already contains multiple accepted patterns, or
+   - the user explicitly requests a different structure.
