@@ -1091,10 +1091,9 @@ out what you missed. \## Live Conversation Override Protocol
 ## Ambiguity Resolution
 
 -   When deciding between:
-    -   completing the entire task, or
-    -   making one incremental change,
-
-    always choose the incremental change.
+-   completing the entire task, or
+-   making one incremental change,
+-   always choose the incremental change.
 
 ## Code Analysis & Review Protocols
 
@@ -1164,14 +1163,6 @@ functions, classes, constants, paths, configuration keys):
 -   Do not replace parameterized identifiers with a guessed base name.
 -   If an identifier is dynamically constructed, state that it is
     dynamically constructed and show the construction source.
-
-Examples:
-
-Forbidden: - "\_tsv_term_tc"
-
-Allowed: - "index_tables\['term_tc'\]" -
-"*tsv_term_tc*{table_id}\_{column_id}" - "the value stored in
-index_tables\['term_tc'\]"
 
 ## Code Fact Grounding
 
