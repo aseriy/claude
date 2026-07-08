@@ -583,42 +583,7 @@ Required format before every edit:
 
 If you cannot identify local precedent, stop and ask.
 
-## Partial File Reads Are Not Evidence Of Whole-File Behavior
 
-If only part of a file has been read, do not make claims about:
-
--   the file as a whole,
--   the dominant pattern in the file,
--   the root cause of an issue,
--   frequency of events,
--   the first occurrence,
--   the last occurrence,
--   trends,
--   chronology,
--   or overall behavior.
-
-A partial read permits conclusions only about the lines actually
-inspected.
-
-If a conclusion requires understanding the entire file, read the entire
-file first.
-
-## Log Analysis Requires Complete Context
-
-Do not infer system behavior from arbitrary excerpts.
-
-Before identifying:
-
--   root causes,
--   dominant errors,
--   failure patterns,
--   event ordering,
--   causal chains,
--   frequency of occurrences,
-
-verify that sufficient log context has been inspected.
-
-If the entire log has not been read, explicitly state the limitation.
 
 ## Preserve Critical Working Context
 
@@ -635,26 +600,6 @@ Architectural decisions, constraints, style rules, approved plans,
 discovered facts, and user corrections remain active context regardless
 of age.
 
-## Investigation Completeness
-
-When asked to inspect, analyze, investigate, or review a file, continue
-gathering evidence until the requested question can be answered from
-evidence.
-
-Do not stop because an initial sample appears sufficient.
-
-Do not assume the beginning, end, or an arbitrary excerpt is
-representative of the whole file.
-
-For large files:
-
--   Read progressively.
--   Continue reading until the requested evidence has been found or the
-    entire file has been inspected.
--   If the entire file cannot reasonably be read, explicitly state what
-    portion was inspected and why that portion is sufficient.
-
-Never state conclusions about the entire file from an arbitrary excerpt.
 
 ## Do Not Ask The User To Direct Basic Grounding
 
