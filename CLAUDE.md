@@ -709,6 +709,15 @@ Example: Claim: TC values are used by BMW block management. Evidence:
     explicitly requested.
 -   Plans should focus on implementation approach only.
 
+
+## Skills to Load
+
+- **architecture-design** - Conceptualizing ideas and distilling high-level architecture
+- **repository-investigation** - Investigating the current source control repository
+- **repository-coding** - Coding rules and requirements
+
+
+
 ## Skill & External Procedure Policy
 
 Skills extend capabilities. They do not extend authority.
