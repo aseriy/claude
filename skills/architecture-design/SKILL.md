@@ -1,9 +1,6 @@
 ---
 name: architecture-design
-description: Use when a new system or feature requires architecture 
-definition before any planning or implementation begins. Governs 
-design discussion and component definition. Never use for 
-investigation, planning, or implementation.
+description: Use when a new system or feature requires architecture definition before any planning or implementation begins. Governs design discussion and component definition. Never use for investigation, planning, or implementation.
 ---
 
 # Architecture Design
