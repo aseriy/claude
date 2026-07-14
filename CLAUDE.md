@@ -715,6 +715,7 @@ Example: Claim: TC values are used by BMW block management. Evidence:
 - **architecture-design** - Conceptualizing ideas and distilling high-level architecture
 - **repository-investigation** - Investigating the current source control repository
 - **repository-coding** - Coding rules and requirements
+- **repository-coding-python** - Coding style, architecture and design patterns when implementing Python projects
 
 
 
