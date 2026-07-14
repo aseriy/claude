@@ -84,9 +84,11 @@ architectural conventions across all projects.
   and errors accumulated in lists and written to timestamped log
   files; `response.raise_for_status()` on HTTP calls
 - String formatting: f-strings throughout; multi-line strings as
-  triple-quoted with `textwrap.dedent().strip()`; log output uses
-  bracketed tags `[INFO]`, `[WARN]`, `[ERROR]`, `[DRY RUN]` printed
-  to stdout with `flush=True` on hot paths; no `logging` module for
+  triple-quoted with `textwrap.dedent().strip()`
+- Logging: use the `logging` module for all application output;
+  configure a logger per module with `logging.getLogger(__name__)`;
+  use appropriate levels — `logger.info`, `logger.warning`,
+  `logger.error`, `logger.debug`; do not use `print` for
   application output
 - Comments: inline `#` notes, numbered step comments,
   `# end if` / `# end for` block markers, `TODO:` markers,
