@@ -716,8 +716,11 @@ Example: Claim: TC values are used by BMW block management. Evidence:
 - **repository-investigation** - Investigating the current source control repository
 - **repository-coding** - Coding rules and requirements
 - **repository-coding-python** - Coding style, architecture and design patterns when implementing Python projects
+- **repository-plan-changes** - Use when explicitly asked to plan, propose, outline, revise, or review a change to existing repository code
 
+Once loaded, the skill remains loaded for the entire session.
 
+On every turn, if the prompt falls within the skill’s domain, you must apply its instructions. An unrelated turn does not unload or deactivate the skill.
 
 ## Skill & External Procedure Policy
 

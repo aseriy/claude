@@ -84,6 +84,18 @@ Do not expand the investigation.
 
 Do not search unrelated files.
 
+When enumerating repository contents, exclude:
+
+  - the .git directory and its contents;
+  - device nodes;
+  - sockets;
+  - named pipes;
+  - sandbox-created mount placeholders.
+
+Do not treat excluded filesystem entries as repository files or evidence about the repository.
+
+Hidden files are not excluded solely because their names begin with `.`.
+
 ## File Reading
 
 Read enough code to answer the question.
