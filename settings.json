@@ -1,0 +1,119 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://agenthub.crdb.dev/llm",
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "300000"
+  },
+  "permissions": {
+    "deny": [
+      "Agent",
+      "AskUserQuestion",
+      "Bash(add-apt-repository *)",
+      "Bash(apt *)",
+      "Bash(apt-get *)",
+      "Bash(cockroach *)",
+      "Bash(curl *)",
+      "Bash(dbmate *)",
+      "Bash(do-release-upgrade *)",
+      "Bash(docker *)",
+      "Bash(dpkg*)",
+      "Bash(exec *)",
+      "Bash(git *)",
+      "Bash(go *)",
+      "Bash(make *)",
+      "Bash(mix *)",
+      "Bash(npm *)",
+      "Bash(psql *)",
+      "Bash(python*)",
+      "Bash(service *)",
+      "Bash(snap *)",
+      "Bash(su *)",
+      "Bash(sudo *)",
+      "Bash(systemctl *)",
+      "Bash(unattended-upgrade*)",
+      "Bash(update-alternatives *)",
+      "Bash(which *)"
+    ],
+    "allow": [
+      "WebFetch",
+      "WebSearch"
+    ],
+    "defaultMode": "plan"
+  },
+  "model": "claude-fable-5-1",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ubuntu/.claude/hooks/require-web-verify.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "disableWorkflows": true,
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "localhost:8080",
+        "127.0.0.1:8080"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "/home/ubuntu/.cache/uv",
+        "/home/ubuntu/gitcrl/citta"
+      ],
+      "denyRead": [
+        "/home/ubuntu",
+        "/mnt"
+      ],
+      "allowRead": [
+        "//bin",
+        "//home/ubuntu/.cache/uv",
+        "//home/ubuntu/git/cockroachdb-omnibox",
+        "//home/ubuntu/git/edge-runtime",
+        "//home/ubuntu/git/envoy",
+        "//home/ubuntu/git/paceuniversity-cs371",
+        "//home/ubuntu/git/postgres-meta",
+        "//home/ubuntu/git/postgrest",
+        "//home/ubuntu/git/roachfeed",
+        "//home/ubuntu/git/supabase",
+        "//home/ubuntu/git/supabase-auth",
+        "//home/ubuntu/git/supabase-demo",
+        "//home/ubuntu/git/supabase-kubernetes",
+        "//home/ubuntu/git/supabase-postgres",
+        "//home/ubuntu/git/supabase-realtime",
+        "//home/ubuntu/git/supabase-storage",
+        "//home/ubuntu/gitcrl/citta",
+        "//lib",
+        "//lib64",
+        "//sbin",
+        "//usr"
+      ]
+    },
+    "excludedCommands": [
+      "uv run *"
+    ]
+  },
+  "pluginConfigs": {
+    "agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md"
+      }
+    }
+  },
+  "verbose": true,
+  "autoCompactEnabled": true,
+  "disableTips": true,
+  "autoUpdates": false,
+  "always_show_raw_tool_outputs": true,
+  "force_tool_verification_loops": true,
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "reloadSkills": true
+  }
+}
