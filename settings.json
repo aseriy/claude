@@ -1,9 +1,14 @@
 {
   "env": {
     "ANTHROPIC_BASE_URL": "https://agenthub.crdb.dev/llm",
-    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "300000"
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "300000",
+    "CLAUDE_CODE_DISABLE_MOUSE": "1"
   },
   "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch"
+    ],
     "deny": [
       "Agent",
       "AskUserQuestion",
@@ -31,27 +36,16 @@
       "Bash(systemctl *)",
       "Bash(unattended-upgrade*)",
       "Bash(update-alternatives *)",
-      "Bash(which *)"
-    ],
-    "allow": [
-      "WebFetch",
-      "WebSearch"
+      "Bash(which *)",
+      "Bash(command *)",
+      "Bash(type *)",
+      "Bash(whereis *)",
+      "Bash(env *)",
+      "Bash(printenv *)"
     ],
     "defaultMode": "plan"
   },
   "model": "claude-fable-5-1",
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/ubuntu/.claude/hooks/require-web-verify.sh"
-          }
-        ]
-      }
-    ]
-  },
   "disableWorkflows": true,
   "sandbox": {
     "enabled": true,
@@ -106,6 +100,7 @@
       }
     }
   },
+  "theme": "dark",
   "verbose": true,
   "autoCompactEnabled": true,
   "disableTips": true,
@@ -115,5 +110,6 @@
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
     "reloadSkills": true
-  }
+  },
+  "tui": "default"
 }
