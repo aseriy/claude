@@ -11,10 +11,21 @@ Technical writing translates complex information into clear, actionable content 
 
 ## Core Principles (The 7 C's)
 
-**Clarity:** Use simple, direct language, define specialized terms, and write in the active voice to make instructions unmistakable.
-- Choose the simpler word wherever meaning is unchanged.
-- Define each specialized term at its first use.
-- Write in active voice. Convert passive constructions to active.
+**Clarity:** Write so the reader understands the point on first reading, without looking anything up.
+
+Words:
+- Use the common word. Use a specialized term only when no common word carries the meaning.
+- A term is allowed when you can point to where it is defined: the source code, the official documentation, the file under discussion, or the user's own words. Name that source if the reader may not know the term.
+- If you cannot point to where a term is defined, you invented it. Delete it and name the thing.
+- Do not use a general word in place of a specific one that exists in the source. Write the function name, the file name, the error text, the command, or the exact section title.
+- Do not use a figure of speech where a plain statement works.
+
+Sentences:
+- One point per sentence.
+- Write an action as a verb, not as a noun. Write "validate", not "perform validation". Write "read the file", not "perform a read of the file".
+- Write in active voice. Say who does what.
+- Keep the subject and its verb next to each other.
+- Do not open a sentence with a clause that delays the point.
 
 **Conciseness:** Remove unnecessary words, eliminate redundancy, and use bullet points to reduce reading time.
 - Delete every word that carries no information.
