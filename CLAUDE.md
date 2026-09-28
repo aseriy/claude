@@ -743,19 +743,6 @@ A skill may describe approved procedures or invoke user-approved
 scripts, but execution still requires explicit authorization under this
 document.
 
-## Tool Use Restrictions
-
--   NEVER invoke the subagent_type: "Explore" for standard coding,
-    searching, documentation, or directory-listing tasks under any
-    circumstances.
--   **Zero Plan-Mode Subagents**: Even during Plan Mode Phase 1, you are
-    structurally banned from using the Explore agent for basic
-    discovery. Use standard bash commands or explicit file-reading tools
-    first.
--   You are strictly forbidden from using the Explore agent for general
-    code location; use standard bash commands (like grep, find) or core
-    read_file tools instead.
-
 ## Approval Semantics
 
 Implementation authorization is determined from the current

@@ -45,6 +45,21 @@
     ],
     "defaultMode": "plan"
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/change-budget.sh",
+            "timeout": 10,
+            "statusMessage": "Checking change budget..."
+          }
+        ]
+      }
+    ]
+  },
   "model": "claude-fable-5-1",
   "disableWorkflows": true,
   "sandbox": {
