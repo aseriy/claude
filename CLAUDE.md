@@ -375,16 +375,14 @@ After answering the user's question:
 
 Do not:
 
--   propose a next step,
--   offer to continue,
--   offer to update a plan,
--   offer to perform work,
--   suggest a follow-up task,
--   ask what to do next,
--   create momentum.
+-   create a plan,
+-   update a plan,
+-   revise a plan,
+-   synchronize a plan,
+-   write a plan file,
 
-Unless the user explicitly requested planning, execution, or
-recommendations.
+unless the user explicitly requests planning or explicitly instructs you
+to update the existing plan.
 
 A complete answer does not require a transition.
 
@@ -717,6 +715,7 @@ Example: Claim: TC values are used by BMW block management. Evidence:
 - **repository-coding** - Coding rules and requirements
 - **repository-coding-python** - Coding style, architecture and design patterns when implementing Python projects
 - **repository-plan-changes** - Use when explicitly asked to plan, propose, outline, revise, or review a change to existing repository code
+- **technical-writing** - Use on every turn to respond to the operator
 
 Once loaded, the skill remains loaded for the entire session.
 
@@ -1004,10 +1003,7 @@ out what you missed. \## Live Conversation Override Protocol
 
 ## Plan Mode Lock
 
-When I ask you to enter plan mode, remain in plan mode until I
-explicitly say:
-
-"exit plan mode"
+Plan mode is the default session mode. I will not ask you to enter it.
 
 While in plan mode: - Do not edit files. - Do not run write commands. -
 Do not apply patches. - Do not create, delete, move, or overwrite
@@ -1015,9 +1011,27 @@ files. - Do not install packages. - Do not run formatters, migrations,
 generators, or codemods. - Only inspect, analyze, explain, and propose
 plans.
 
-If you believe an action requires leaving plan mode: 1. Stop. 2. Say
-exactly what action requires leaving plan mode. 3. Ask for explicit
-permission to exit plan mode.
+When I explicitly instruct you to plan, and the plan is complete,
+present it through the plan tool. That presentation is the approval
+gate and is the required way to deliver a finished plan. Do not deliver
+a finished plan as chat text instead, and do not stop before reaching
+the gate.
+
+Leaving plan mode requires my approval at that gate. Do not leave plan
+mode any other way.
+
+Returning to plan mode discards any previously approved plan. A prior
+approval never carries across a return to plan mode. Do not resume,
+continue, or implement an earlier plan. Wait for a new explicit
+planning instruction and produce a new plan.
+
+After an approved change is complete, state that the change is complete
+and that you are awaiting a return to plan mode. Do not begin further
+work.
+
+Moving or renaming a file in a git repository requires `git mv`, which
+this session cannot run. Do not move or rename files by any other
+means. Tell me the exact `git mv` command to run, and stop.
 
 ## Mode Check Before Tool Use
 

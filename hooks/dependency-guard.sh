@@ -32,6 +32,9 @@ case "$TOOL" in
     ;;
   Bash)
     CMD=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // ""')
+    if printf '%s' "$CMD" | grep -qE '(^|[;&|]\s*)(mv|rename)\s'; then
+      deny "Moving or renaming files in a git repository requires 'git mv', which this session cannot run. Do not move or rename the file. Tell the user the exact 'git mv' command to run, and stop."
+    fi
     if printf '%s' "$CMD" | grep -qE '\b(find|grep|rg|ls|cat|wc|head|tail)\b' \
        && ! printf '%s' "$CMD" | grep -qE "$EXEMPT" \
        && printf '%s' "$CMD" | grep -qE "$EXCLUDED"; then

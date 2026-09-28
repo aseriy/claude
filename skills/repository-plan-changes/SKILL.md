@@ -127,6 +127,9 @@ Do not include:
 
 ## Completion
 
-Present the plan and stop.
+Present the plan through the plan tool. That presentation is the
+approval gate.
 
-Do not implement the change.
+Do not deliver the finished plan as chat text and stop before the gate.
+
+Do not implement the change until approved at that gate.
