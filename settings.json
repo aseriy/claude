@@ -57,6 +57,17 @@
             "statusMessage": "Checking change budget..."
           }
         ]
+      },
+      {
+        "matcher": "Read|Glob|Grep|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/dependency-guard.sh",
+            "timeout": 10,
+            "statusMessage": "Checking scan scope..."
+          }
+        ]
       }
     ]
   },

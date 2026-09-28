@@ -870,10 +870,6 @@ then wait for authorization.
 
 ## Repository Exploration Rules
 
--   **No Guessing File Structures**: Never assume, hallucinate, or
-    extrapolate the existence of files, directories, or code logic that
-    you have not explicitly verified via terminal commands (`ls`,
-    `find`, `cat`, `git`).
 -   **Diff Anchoring**: When analyzing a diff, commit, history excerpt,
     or other repository evidence provided by the user or obtained
     through explicitly authorized commands, anchor your analysis
@@ -979,14 +975,6 @@ out what you missed. \## Live Conversation Override Protocol
 -   Never bundle multiple fixes, refactors, imports, cleanups, or
     related changes into a single edit.
 
-## File Rewrite Prohibition
-
--   Full-file rewrites are forbidden.
--   Replacing large sections of a file is forbidden.
--   Preserve the existing file structure whenever possible.
--   If a solution would require touching more than 10 contiguous lines,
-    stop and ask for approval first.
-
 ## Change Budget
 
 -   Default budget: one edit.
@@ -1009,10 +997,6 @@ out what you missed. \## Live Conversation Override Protocol
 -   **Explain the "Why" and "How"**: Your summaries must focus on code
     logic, structural transformations, changes in control flow, and
     architectural alignment.
--   **Strict Environment Exclusion**: Never include files from `.venv/`,
-    `node_modules/`, or external dependencies in repository scans. If a
-    file path belongs to an external library, filter it out immediately
-    to avoid architectural hallucinations.
 -   **Verification Prerequisite**: Before stating that code is
     "functional" or "stubbed," you must inspect the function bodies
     within the diff to verify the presence of actual implementation
