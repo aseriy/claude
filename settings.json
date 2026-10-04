@@ -45,6 +45,7 @@
     ],
     "defaultMode": "plan"
   },
+  "model": "claude-fable-5-1",
   "hooks": {
     "PreToolUse": [
       {
@@ -71,8 +72,18 @@
       }
     ]
   },
-  "model": "claude-fable-5-1",
   "disableWorkflows": true,
+  "enabledPlugins": {
+    "miru@miru": true
+  },
+  "extraKnownMarketplaces": {
+    "miru": {
+      "source": {
+        "source": "github",
+        "repo": "takara-ai/miru-code"
+      }
+    }
+  },
   "sandbox": {
     "enabled": true,
     "allowUnsandboxedCommands": false,
@@ -124,8 +135,14 @@
       "options": {
         "instructionFiles": "claude-md"
       }
+    },
+    "miru@miru": {
+      "options": {
+        "benchmark": false
+      }
     }
   },
+  "tui": "default",
   "theme": "dark",
   "verbose": true,
   "autoCompactEnabled": true,
@@ -136,6 +153,5 @@
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
     "reloadSkills": true
-  },
-  "tui": "default"
+  }
 }

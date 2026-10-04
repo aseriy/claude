@@ -820,7 +820,9 @@ others were checked.
 -   Plans should focus on implementation approach only.
 
 
-## Skills to Load
+## Protocol: Skill Activation Rule
+
+Load the following skills at session start or re-start. You must immediately treat every one of these skills as fully active and binding.
 
 - **architecture-design** - Conceptualizing ideas and distilling high-level architecture
 - **repository-investigation** - Investigating the current source control repository
@@ -829,9 +831,11 @@ others were checked.
 - **repository-plan-changes** - Use when explicitly asked to plan, propose, outline, revise, or review a change to existing repository code
 - **technical-writing** - Use on every turn to respond to the operator
 
-Once loaded, the skill remains loaded for the entire session.
+`Loading` a skill explicitly triggers the following mandatory workflow before any response is generated:
 
-On every turn, if the prompt falls within the skill’s domain, you must apply its instructions. An unrelated turn does not unload or deactivate the skill.
+1. Zero-Trust Verification: Stop and verify every claim directly against the source data or code. Do not reason forward from memory or treat inferences as facts.
+2. Mandatory Self-Check Pass: You must run the draft through a dedicated evaluation pass against the skill's core principles (e.g., the technical-writing correctness rules) before streaming or finalizing the output.
+3. Skipping Disallowed: A skill cannot be partially applied or skipped for speed. If the skill is loaded, the verification pass is non-negotiable.
 
 ## Skill & External Procedure Policy
 
