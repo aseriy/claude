@@ -815,7 +815,14 @@ others were checked.
 
 ## Protocol: Skill Activation Rule
 
-Read the following skills at session start or restart. Each one is binding whenever it governs a response. technical-writing governs every response. Each other skill governs a response when Skill Activation above selects it, when its own description's trigger holds, or when the user names it.
+@~/.claude/skills/architecture-design/SKILL.md
+@~/.claude/skills/repository-investigation/SKILL.md
+@~/.claude/skills/repository-coding/SKILL.md
+@~/.claude/skills/repository-coding-python/SKILL.md
+@~/.claude/skills/repository-plan-changes/SKILL.md
+@~/.claude/skills/technical-writing/SKILL.md
+
+Each skill above is binding whenever it governs a response. technical-writing governs every response. Each other skill governs a response when Skill Activation above selects it, when its own description's trigger holds, or when the user names it.
 
 - **architecture-design** - Conceptualizing ideas and distilling high-level architecture
 - **repository-investigation** - Investigating the current source control repository

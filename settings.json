@@ -154,5 +154,16 @@
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
     "reloadSkills": true
-  }
+  },
+  "PostToolUse": [
+    {
+      "matcher": "Skill",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "jq -c '{systemMessage: (\"skill loaded: \" + .tool_input.skill)}'"
+        }
+      ]
+    }
+  ]
 }
