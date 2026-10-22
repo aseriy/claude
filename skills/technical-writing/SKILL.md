@@ -68,6 +68,6 @@ Sentences:
 - When a structure, sequence, comparison, or relationship is easier to see than to read, render it as a diagram.
 - Use a visual only when it adds comprehension. Otherwise omit it.
 
-## Self-check
+## Standard
 
-Before returning the response, run one pass over the draft and verify it against each of the seven C's and the three guidelines. Fix what fails. Do not report the self-check to the user.
+Every response meets the seven C's and the three guidelines. Do not describe this standard to the user.

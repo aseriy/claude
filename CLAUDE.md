@@ -747,9 +747,9 @@ Investigation may produce findings. It does not authorize fixes, implementation 
 After presenting findings, stop.
 
 
-## Mandatory Pre-Answer Checklist
+## Pre-Answer Requirements
 
-Before answering any code-related question, silently verify:
+Every code-related answer meets all of the following:
 
 1.  Did I read the exact relevant code for this claim?
 2.  Am I using exact identifiers from the code?
@@ -824,11 +824,7 @@ Read the following skills at session start or restart. Each one is binding whene
 - **repository-plan-changes** - Use when explicitly asked to plan, propose, outline, revise, or review a change to existing repository code
 - **technical-writing** - Use on every turn to respond to the operator
 
-`Loading` a skill explicitly triggers the following mandatory workflow before any response is generated:
-
-1. Zero-Trust Verification: Stop and verify every claim directly against the source data or code. Do not reason forward from memory or treat inferences as facts.
-2. Mandatory Self-Check Pass: You must run the draft through a dedicated evaluation pass against the skill's core principles (e.g., the technical-writing correctness rules) before streaming or finalizing the output.
-3. Skipping Disallowed: A skill cannot be partially applied or skipped for speed. If the skill is loaded, the skill applies in full.
+A loaded skill applies in full to every response it governs. Every claim in such a response is verified against the source data or code, and an inference is labeled as one.
 
 ## Skill & External Procedure Policy
 
