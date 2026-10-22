@@ -672,12 +672,15 @@ from the same source? If yes, it is a step 1 or step 2 question. If it
 depends on what has been run, granted, created, or configured on this
 deployment, it is a probe.
 
-Sort every open question into one of four states and label it:
+Sort every open question into one of five states and label it:
 
 -   Settled from the repository. Cite the file and the exact
     identifier.
 -   Settled from published documentation. Name the page and state the
     condition the answer depends on.
+-   Readable but not yet read. Name the file. Read it before asking
+    anything. This state is your work, not the user's. Do not put it
+    in the list of probes.
 -   Probe. State the exact command and what its result would prove.
 -   Blocked. The question cannot be answered yet because the code to
     exercise it does not exist. Name the code that is missing.
@@ -687,6 +690,7 @@ Rules for the probe list:
 -   One unknown per probe. Do not bundle.
 -   Do not ask for a probe that confirms something already settled. If
     you know the answer, state it as settled and move on.
+-   Do not ask the user to confirm a fact the source already settled.
 -   Do not ask for a probe built on a guessed name. If the table,
     column, role, or path is not verified, read the source that
     defines it first.
@@ -696,28 +700,6 @@ Rules for the probe list:
 -   Carry every condition the answer depends on into the claim itself.
     A claim that holds only under a default setting is not settled
     until that setting is checked.
-
-The same rule applies to asking the user to run a command. Before
-asking for a probe, check whether any file, schema, migration,
-manifest, or document answers the question. If one does, read it. A
-probe is only for facts that exist at runtime and are written down
-nowhere.
-
-Sort every open question into one of three states and label it:
-
--   Settled from source. Cite the file and the exact identifier.
--   Readable but not yet read. Name the file. Read it before asking
-    anything.
--   Runtime only. State the probe and what its result would prove.
-
-The middle state is your work, not the user's. Do not put it in the
-list of probes.
-
-Do not ask for a probe built on a guessed name. If the table, column,
-role, or path in the probe is not verified, read the source that
-defines it first.
-
-Do not ask the user to confirm a fact the source already settled.
 
 ## Plan Artifacts Require Explicit User Authorization
 
