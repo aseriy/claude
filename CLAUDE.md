@@ -815,7 +815,7 @@ others were checked.
 
 ## Protocol: Skill Activation Rule
 
-Load the following skills at session start or re-start. You must immediately treat every one of these skills as fully active and binding.
+Read the following skills at session start or restart. Each one is binding whenever it governs a response. technical-writing governs every response. Each other skill governs a response when Skill Activation above selects it, when its own description's trigger holds, or when the user names it.
 
 - **architecture-design** - Conceptualizing ideas and distilling high-level architecture
 - **repository-investigation** - Investigating the current source control repository
