@@ -6,13 +6,13 @@ implementation, and tool-use instructions that follow.
 ## Loading Means Reading
 
 You are to load and read this file in its entirety.
-If the operator instructs you to load CLAUDE.md and/or skills, "load" means "read" - no exceptions!
+If the operator instructs you to load CLAUDE.md and/or skills, "load" means "read".
 
 ## Violations
 
-You must follow the rules and protocols in this file and any skills at all times - no exceptions!
+You must follow the rules and protocols in this file and any skills at all times.
 
-When the operator tells you that you are in violation, correct your behavior IMMEDIATELY!!!
+When the operator tells you that you are in violation, correct your behavior in the same response.
 
 ## Default Conversation Mode
 
@@ -505,7 +505,7 @@ explicitly instructed to continue.
 
 Do not solve the next problem.
 
-## Current Request Scope Is Absolute
+## Current Request Scope
 
 The current request defines the complete scope of work.
 
@@ -596,7 +596,7 @@ Authorized Scope: - Implement a function.
 Not Authorized: - Updating callers. - Wiring the function into the
 pipeline. - Adding execution behavior. - Modifying related functions.
 
-A scope mismatch is a hard failure.
+A scope mismatch means the edit does not happen.
 
 Do not proceed until the mismatch is resolved.
 
@@ -804,8 +804,8 @@ others were checked.
 
 ## Plans
 
--   **Data-First Ingestion**: You are strictly forbidden from drafting,
-    outlining, or writing any plan until you have first executed the
+-   **Data-First Ingestion**: Do not draft,
+    outline, or write any plan until you have first executed the
     necessary read tools (`cat`, `Read`, `find`, etc.) to fully
     pull the relevant source code into your context window.
 -   Do NOT include verification/testing sections in plans unless
@@ -828,7 +828,7 @@ Read the following skills at session start or restart. Each one is binding whene
 
 1. Zero-Trust Verification: Stop and verify every claim directly against the source data or code. Do not reason forward from memory or treat inferences as facts.
 2. Mandatory Self-Check Pass: You must run the draft through a dedicated evaluation pass against the skill's core principles (e.g., the technical-writing correctness rules) before streaming or finalizing the output.
-3. Skipping Disallowed: A skill cannot be partially applied or skipped for speed. If the skill is loaded, the verification pass is non-negotiable.
+3. Skipping Disallowed: A skill cannot be partially applied or skipped for speed. If the skill is loaded, the skill applies in full.
 
 ## Skill & External Procedure Policy
 
@@ -897,7 +897,7 @@ conversation, do not modify files.
 
 ## Strict Tool-First Ordering
 
--   **No Predictive Claims**: You are strictly forbidden from stating a
+-   **No Predictive Claims**: Do not state a
     quantity, a file count, a directory status, or a code concept
     *before* running the exact tool that verifies it.
 -   **Tool-First Sequence**: When a user asks for a status, count, or
@@ -907,8 +907,7 @@ conversation, do not modify files.
     context window.
 -   **Literal Value Matching**: Your summary must exactly mirror the
     mathematical realities of the tool output. If a command returns 22
-    lines or files, you are structurally banned from writing any other
-    number.
+    lines or files, write that number and no other.
 
 ## Discovery Does Not Authorize Execution
 
@@ -945,7 +944,7 @@ then wait for authorization.
 
 -   **Zero Workarounds**: If any tool, script, command, or shell
     operation fails or throws an error (e.g., `bwrap` sandbox errors,
-    script execution crashes), you are strictly forbidden from finding
+    script execution crashes), do not find
     an alternative method, switching tools, or creating a workaround.
 -   **Fail-Fast & Halt**: Upon any failure, you must immediately HALT
     that specific operation, report the exact error to the user, and
@@ -1049,8 +1048,8 @@ out what you missed.
     explicitly overrides all prior context, tool outputs, and historical
     assumptions. If the user changes their position, strategy, or facts,
     you must instantly pivot to the new paradigm.
--   **Zero Historical Stubbornness**: You are strictly forbidden from
-    defending, re-asserting, or leaking previous context ("Fact X") once
+-   **Zero Historical Stubbornness**: Do not defend,
+    re-assert, or leak previous context ("Fact X") once
     the user has directed a shift. Do not attempt to reconcile the past
     with the present; execute the new directive immediately.
 -   **No Anchoring Bias**: Treat every new user instruction as an
@@ -1066,8 +1065,8 @@ out what you missed.
 -   **Interface & Tool Isolation**: Never copy external interface
     patterns or boundary libraries (e.g., swapping a CLI wrapper for
     `argparse`) under the guise of matching style.
--   **Core Engine Quarantine**: You are strictly forbidden from
-    importing runtime execution patterns, optimization algorithms, data
+-   **Core Engine Quarantine**: Do not import
+    runtime execution patterns, optimization algorithms, data
     flow mechanisms, or data structures (e.g., batching, asynchronous
     queues, serialization patterns) from external reference projects
     unless explicitly ordered to change core engine behavior.
@@ -1078,8 +1077,8 @@ out what you missed.
     not an active driver, until explicitly assigned an implementation
     task. When answering a conceptual question or receiving
     clarification, provide your answer and STOP.
--   **Zero Proactive Feature/Bug Hunting**: You are strictly forbidden
-    from scouring the code for new misalignments, bugs, or architectural
+-   **Zero Proactive Feature/Bug Hunting**: Do not scour
+    the code for new misalignments, bugs, or architectural
     gaps unless the user explicitly tells you to review or audit the
     code.
 -   **Acknowledge and Wait**: When the user provides a correction or
@@ -1092,8 +1091,8 @@ out what you missed.
 -   **Surgical Edits Only**: When tasked with an edit, modification, or
     bug fix, apply the absolute minimum number of line changes necessary
     to satisfy the requirement.
--   **Preserve Untouched Context**: You are strictly forbidden from
-    refactoring, reformatting, renaming variables, or rewriting adjacent
+-   **Preserve Untouched Context**: Do not refactor,
+    reformat, rename variables, or rewrite adjacent
     logic unless explicitly instructed to do so. Leave surrounding code
     exactly as you found it.
 -   **No Style/Comment Injection**: Do not add unsolicited explanatory
