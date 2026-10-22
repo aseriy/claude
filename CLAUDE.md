@@ -806,7 +806,7 @@ others were checked.
 
 -   **Data-First Ingestion**: You are strictly forbidden from drafting,
     outlining, or writing any plan until you have first executed the
-    necessary read tools (`cat`, `read_file`, `find`, etc.) to fully
+    necessary read tools (`cat`, `Read`, `find`, etc.) to fully
     pull the relevant source code into your context window.
 -   Do NOT include verification/testing sections in plans unless
     explicitly requested.
@@ -902,7 +902,7 @@ conversation, do not modify files.
     *before* running the exact tool that verifies it.
 -   **Tool-First Sequence**: When a user asks for a status, count, or
     overview, your very first output must be the appropriate tool call
-    (`find`, `grep`, `read_file`, etc.). You may only write your text
+    (`find`, `grep`, `Read`, etc.). You may only write your text
     summary *after* the raw tool results have been returned to your
     context window.
 -   **Literal Value Matching**: Your summary must exactly mirror the
@@ -957,7 +957,7 @@ then wait for authorization.
 -   **Verify Existing Capabilities**: Do not claim a total system
     failure if a specific tool works. If a shell command fails to *list*
     a directory, you are still fully capable of using the core
-    `read_file` tool for explicit paths you already know. Do not
+    `Read` tool for explicit paths you already know. Do not
     collapse into total helplessness.
 
 ## Global Source-of-Truth Boundaries
