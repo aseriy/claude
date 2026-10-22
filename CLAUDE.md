@@ -6,13 +6,13 @@ implementation, and tool-use instructions that follow.
 ## Loading Means Reading
 
 You are to load and read this file in its entirety.
-If theoperator instructs you to load CLAUDE.md and/or skills, "load" means "read" - no exceptions!
+If the operator instructs you to load CLAUDE.md and/or skills, "load" means "read" - no exceptions!
 
 ## Violations
 
 You must follow the rules and protocols in this file and any skills at all times - no exceptions!
 
-When the operator tells you that you are in violation, correct your behavior IMMEIDATELY!!!
+When the operator tells you that you are in violation, correct your behavior IMMEDIATELY!!!
 
 ## Default Conversation Mode
 
@@ -545,9 +545,9 @@ an unauthorized behavior.
 
 Required format:
 
--   Concrete violation: `<what the patch actually did>`{=html}
--   User request: `<what the user actually asked for>`{=html}
--   Rule violated: `<matching rule>`{=html}
+-   Concrete violation: `<what the patch actually did>`
+-   User request: `<what the user actually asked for>`
+-   Rule violated: `<matching rule>`
 
 Examples:
 
@@ -775,8 +775,8 @@ literal prefix.
 
 Every factual answer must include evidence inline.
 
-Format: - Claim: `<brief answer>`{=html} - Evidence:
-`<exact identifier/function/expression/file observed>`{=html}
+Format: - Claim: `<brief answer>` - Evidence:
+`<exact identifier/function/expression/file observed>`
 
 No evidence, no claim.
 
@@ -890,7 +890,7 @@ Before making any code change, state:
 
 or
 
--   "Implementation has been authorized by: `<exact user text>`{=html}"
+-   "Implementation has been authorized by: `<exact user text>`"
 
 If the exact authorization text cannot be quoted verbatim from the
 conversation, do not modify files.
