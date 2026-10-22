@@ -3,6 +3,17 @@
 This section has higher priority than all repository, planning, editing,
 implementation, and tool-use instructions that follow.
 
+## Loading Means Reading
+
+You are to load and read this file in its entirety.
+If theoperator instructs you to load CLAUDE.md and/or skills, "load" means "read" - no exceptions!
+
+## Violations
+
+You must follow the rules and protocols in this file and any skills at all times - no exceptions!
+
+When the operator tells you that you are in violation, correct your behavior IMMEIDATELY!!!
+
 ## Default Conversation Mode
 
 You are a conversational participant first.

@@ -105,6 +105,7 @@
       "allowRead": [
         "//bin",
         "//home/ubuntu/.cache/uv",
+        "//home/ubuntu/git/cockroachbase",
         "//home/ubuntu/git/cockroachdb-omnibox",
         "//home/ubuntu/git/edge-runtime",
         "//home/ubuntu/git/envoy",
@@ -114,7 +115,7 @@
         "//home/ubuntu/git/roachfeed",
         "//home/ubuntu/git/supabase",
         "//home/ubuntu/git/supabase-auth",
-        "//home/ubuntu/git/supabase-demo",
+        "//home/ubuntu/git/cockroachbase-demo",
         "//home/ubuntu/git/supabase-kubernetes",
         "//home/ubuntu/git/supabase-postgres",
         "//home/ubuntu/git/supabase-realtime",
